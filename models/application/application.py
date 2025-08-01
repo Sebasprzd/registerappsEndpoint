@@ -18,12 +18,12 @@ class ApplicationModel:
                 'admin_email': data['admin_email'],
                 'redirect_url': data['redirect_url'],
                 'client_id': client_id,
-                'client_secret': hashed_secret.decode('utf-8'),
+                'password_secret': hashed_secret.decode('utf-8'),
                 'creation_date': datetime.utcnow(),
                 'status': 'active'
             }
             self.collection.create_data(app_data)
-            return {'client_id': client_id, 'client_secret': client_secret_raw}
+            return {'client_id': client_id, 'password_secret': client_secret_raw}
         except Exception as e:
             # Consider logging the error
             return None
